@@ -3,7 +3,7 @@
     "node": ">=16.0.0",
     "npm": ">=7.0.0"
   },
-  "name": "HackatonCiberSeg",
+  "name": "hackatonciberseg",
   "scripts": {
     "build": "npm run build --workspaces --if-present",
     "prebuild": "npm run prebuild --workspaces --if-present",
@@ -15,5 +15,20 @@
   "workspaces": [
     "src/HackatonCiberSeg_backend",
     "src/HackatonCiberSeg_frontend"
-  ]
+  ],
+  "description": "Welcome to your new HackatonCiberSeg project and to the Internet Computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "azle": "^0.22.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0"
+  }
 }
