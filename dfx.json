@@ -1,0 +1,41 @@
+{
+  "canisters": {
+    "ciberseguridadhacka_backend": {
+      "build": "npx azle ciberseguridadhacka_backend",
+      "candid": "src/ciberseguridadhacka_backend/ciberseguridadhacka_backend.did",
+      "gzip": true,
+      "main": "src/ciberseguridadhacka_backend/src/index.ts",
+      "type": "custom",
+      "wasm": ".azle/ciberseguridadhacka_backend/ciberseguridadhacka_backend.wasm"
+    },
+    "ciberseguridadhacka_frontend": {
+      "dependencies": [
+        "ciberseguridadhacka_backend"
+      ],
+      "source": [
+        "src/ciberseguridadhacka_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "ciberseguridadhacka_frontend"
+    },
+    "internet_identity": {
+      "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
+      "frontend": {},
+      "remote": {
+        "id": {
+          "ic": "rdmx6-jaaaa-aaaaa-aaadq-cai"
+        }
+      },
+      "type": "custom",
+      "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
