@@ -1,31 +1,82 @@
-import { useState } from 'react';
-import { ciberseguridadhacka_backend } from 'declarations/ciberseguridadhacka_backend';
+import { useEffect, useState } from 'react';
+import { useRestActor } from "@bundly/ares-react";
+import {
+  Container,
+Card,
+CardBody,
+ButtonGroup,
+Button,
+CardTitle,
+Form,
+FormGroup,
+FormLabel,
+FormControl
+} from "react-bootstrap"
 
 function App() {
-  const [greeting, setGreeting] = useState('');
+  const backend = useRestActor("backend");
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    const name = event.target.elements.name.value;
-    ciberseguridadhacka_backend.greet(name).then((greeting) => {
-      setGreeting(greeting);
-    });
-    return false;
+  useEffect(() => {
+    const res = backend.get("/Working");
+  }, [])
+
+  const onChangeRegistrer = (e)=>{
+    console.log("esta jalando")
   }
 
-  return (
-    <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <section id="greeting">{greeting}</section>
-    </main>
-  );
+  const onSubmit = ()=>{
+    consle.log("Send data")
+  }
+
+
+  return(
+<>
+        <Container>
+            <Card>
+                <CardBody>
+
+                    <ButtonGroup>
+                        <Button variant="secondary" className="bottonT">Ingresar</Button>
+                        <Button variant="secondary" className="bottonT">Registro de Usuario</Button>
+                        <Button variant="secondary" className="bottonT">Actualizar Usuario</Button>
+                        <Button variant="secondary" className="bottonT">Eliminar Usuario</Button>
+                    </ButtonGroup>
+                </CardBody>
+            </Card>
+
+            <Card>
+                <Card.Body>
+                    <CardTitle>Registro de usuarios</CardTitle>
+                    <Form>
+                        <FormGroup>
+                            <FormLabel>Nombre</FormLabel>
+                            <FormControl onChange={onChangeRegistrer} name="name" placeholder="Ingresa tu nombre" />
+                        </FormGroup>
+
+                        <FormGroup>
+                            <FormLabel>Apellido</FormLabel>
+                            <FormControl onChange={onChangeRegistrer} name="last_name" placeholder="Ingresa tu apellido" />
+                        </FormGroup>
+
+                        <FormGroup>
+                            <FormLabel>Correo</FormLabel>
+                            <FormControl onChange={onChangeRegistrer} name="email" type="email" placeholder="Ingresa tu correo" />
+                        </FormGroup>
+
+                        <FormGroup>
+                            <FormLabel>Contraseña</FormLabel>
+                            <FormControl onChange={onChangeRegistrer} name="password" type="password" placeholder="Ingresa tu contraseña" />
+                        </FormGroup>
+
+                        <Card>
+                            <Button onClick={onSubmit} className="bottonT">¡Regístrate!</Button>
+                        </Card>
+                    </Form>
+                </Card.Body>
+            </Card>
+        </Container>
+        </>
+  )
 }
 
 export default App;
